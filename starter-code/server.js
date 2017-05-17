@@ -35,7 +35,7 @@ app.use(express.static('./public'));
 // REVIEW: Routes for requesting HTML resources
 app.get('/new', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Identify which line(s) of code from the client-side blog app are interacting with this particular piece of `server.js`, and the name of the method. Do those lines of code interact with or invoke a different portion of the blog, and if so, where? What part of CRUD is being enacted/managed by this particular piece of code?
-  // its corresponding to number 2 on the full-stack-diagram which renders the new.html file
+  // its corresponding to number 1 and 2 on the full-stack-diagram which renders the new.html file
   //Once the file is rendered to the screen on line 83 it invokes this method //articleView.initNewArticlePage(); and this method invokes the following methods articleView.create, //articleView.submit in the articleView.js file, those methods are creating from CRURD.
   response.sendFile('new.html', {root: './public'});
 });
@@ -45,7 +45,7 @@ app.get('/new', function(request, response) {
 app.get('/articles', function(request, response) {
 
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Identify which line(s) of code from the client-side blog app are interacting with this particular piece of `server.js`, and the name of the method. Do those lines of code interact with or invoke a different portion of the blog, and if so, where? What part of CRUD is being enacted/managed by this particular piece of code?
-  // It is doing number 3 which is trying to get data form the articles db table. I don't think it is //interacting with the client side just yet. From CRUD is trying to Read data form DB. 
+  // It is doing number 3 which is trying to get data form the articles db table. I don't think it is //interacting with the client side just yet. From CRUD is trying to Read data form DB.
   client.query('SELECT * FROM articles')
   .then(function(result) {
     response.send(result.rows);
@@ -57,7 +57,7 @@ app.get('/articles', function(request, response) {
 
 app.post('/articles', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Identify which line(s) of code from the client-side blog app are interacting with this particular piece of `server.js`, and the name of the method. Do those lines of code interact with or invoke a different portion of the blog, and if so, where? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // it is doing number 3 which is inserting data into the DB. It is interacting with line 69 of the //article.js file which gets the input data from the form, name of the method is insert(). CRUD will //be Create.
   client.query(
     `INSERT INTO
     articles(title, author, "authorUrl", category, "publishedOn", body)
@@ -82,7 +82,7 @@ app.post('/articles', function(request, response) {
 
 app.put('/articles/:id', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Identify which line(s) of code from the client-side blog app are interacting with this particular piece of `server.js`, and the name of the method. Do those lines of code interact with or invoke a different portion of the blog, and if so, where? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // full-stack-diagram number is 3 which is trying to update a particular record.It interacts with line 88 from the article.js file and method is updateRecord(). CRUD will be Up or Update.
   client.query(
     `UPDATE articles
     SET
