@@ -43,8 +43,9 @@ app.get('/new', function(request, response) {
 
 // REVIEW: Routes for making API calls to use CRUD Operations on our database
 app.get('/articles', function(request, response) {
+
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Identify which line(s) of code from the client-side blog app are interacting with this particular piece of `server.js`, and the name of the method. Do those lines of code interact with or invoke a different portion of the blog, and if so, where? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // It is doing number 3 which is trying to get data form the articles db table. I don't think it is //interacting with the client side just yet. From CRUD is trying to Read data form DB. 
   client.query('SELECT * FROM articles')
   .then(function(result) {
     response.send(result.rows);
