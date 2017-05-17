@@ -20,7 +20,7 @@ const conString = 'postgres://localhost:5432';
 //       This is how it knows the URL and, for Windows and Linux users, our username and password for our
 //       database when client.connect is called on line 26. Thus, we need to pass our conString into our
 //       pg.Client() call.
-const client = new pg.Client('conString');
+const client = new pg.Client(conString);
 
 // REVIEW: Use the client object to connect to our DB.
 client.connect();
@@ -35,7 +35,8 @@ app.use(express.static('./public'));
 // REVIEW: Routes for requesting HTML resources
 app.get('/new', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Identify which line(s) of code from the client-side blog app are interacting with this particular piece of `server.js`, and the name of the method. Do those lines of code interact with or invoke a different portion of the blog, and if so, where? What part of CRUD is being enacted/managed by this particular piece of code?
-  // Put your response here...
+  // its corresponding to number 2 on the full-stack-diagram which renders the new.html file
+  //Once the file is rendered to the screen on line 83 it invokes this method //articleView.initNewArticlePage(); and this method invokes the following methods articleView.create, //articleView.submit in the articleView.js file, those methods are creating from CRURD.
   response.sendFile('new.html', {root: './public'});
 });
 
